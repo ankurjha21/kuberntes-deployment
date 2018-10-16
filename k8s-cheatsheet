@@ -1,0 +1,8 @@
+kubectl apply -f ./deployment.yml      #for applying the changes made up on deployment.yml file
+
+kubectl expose deployment tomcat-deployment --type=Nodeport 
+# exposing the deployment of tomcat where Nodeport are expose the Pod to the external World as a service
+ 
+ minikube service tomcat-deployment --url  #output of this will be our URL for accessing the tomcat
+ 
+ 
