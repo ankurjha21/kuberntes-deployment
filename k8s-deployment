@@ -1,0 +1,14 @@
+kubectl is the gateway for working witn deployments
+
+kubectl get deployment #list all the deployments
+
+kubectl rollout status deployment name of deployment #view status of deployments roll outs 
+
+kubectl set image # set the image of a deployment 
+eg -  kubectl set image deployemnt name tomcat=tomcat:9.0.1
+
+
+kubectl rollout history deployment name # view the history of all roll out  including the previous version or revison
+ eg- kubectl rollout history  deployment name  --revision=4
+ 
+ 
