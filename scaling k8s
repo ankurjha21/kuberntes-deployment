@@ -1,0 +1,19 @@
+scalling is depend on the type of application i.e stateful vs stateless application
+
+stateless app is an application program that does not save client data generated in one session for use in the next session with that client. ... 
+Stateful application saves data about each client session and uses that data the next time the client makes a request
+
+Replicas alows you to define the number of replica set when you deploy an application  on deployment file 
+ setting replica in your deployment recommended
+
+kubectl scale --replicas=4 deployment/tomcat-deployment
+ o/p scaled
+ kubectl get deployments will show 4 replicas for this tomcat 
+
+
+how replica will work for that we need to update tyhe service file also this work is to be done by load balencer
+ kubectl expose deployment tomcat-deployment --type = loadbalencer --port=8080 --target-port=8080 --name tomcat-load-balencer
+
+kubectl describe services tomcat-load-balancer
+
+
