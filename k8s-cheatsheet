@@ -1,8 +1,43 @@
+kubectl describe pods[pod_name] #detailed info about all pods or  a specified pod
+
 kubectl apply -f ./deployment.yml      #for applying the changes made up on deployment.yml file
 
-kubectl expose deployment tomcat-deployment --type=Nodeport 
-# exposing the deployment of tomcat where Nodeport are expose the Pod to the external World as a service
+kubectl expose <type name><identifier/name>[--port-external port][--target-port-container port][--type-service-type]
+ eg:-kubectl expose deployment tomcat-deployment --type=Nodeport 
+ #exposing the deployment of tomcat where Nodeport are expose the Pod to the external World as a service
+ Exposes a port TCS or UDP for a given deployemnt,pod or other resource
  
- minikube service tomcat-deployment --url  #output of this will be our URL for accessing the tomcat
+minikube service tomcat-deployment --url  #output of this will be our URL for accessing the tomcat
+ 
+kubectl port-forward <pod-name>[local_Port]:[Remote_Port]
+  eg:- kubectl port-forward tomcat-deployment (pod name) 5000:6000 forwarding from 127.0.0.1:5000 -> 6000
+  #Forwards one or more local ports to a pod
+ 
+kubectl attach <pod name> -c <container>
+ #Attaches to a processs that is already inside an existing container
+ eg:- kubectl attach tomcat-deployment-instance
+ 
+kubectl exec-[it]<pod-name>[-c container]--command[arguments]
+ #It will execute the command in a container
+ -i option will pass stdin to the container
+ -t option will specify stdin is a TTY
+  eg:- kubectl exec -it tomcat-deployment-7bd788 bash 
+  #this command will enter you  in bash shell of the contianer
+  
+kubectl label[--overwrite]<type>Key_1-Val_1..
+ for updating the labels on a resource also we are able to set the key value pair on any pods
+ eg- kubectl label pods tomcat-deployment healthy=false
+     o/p labeled.
+     
+ kubectl run <name> --image=imagename
+  For running the particular image on the cluster
+  eg:- kubectl run hazelcast  --image=hazelcast --port=5701
+   o/p deployment created 
+ 
+     
+  
+ 
+ 
+ 
  
  
