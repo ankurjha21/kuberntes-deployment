@@ -1,0 +1,38 @@
+Health Checks came in to the picture when we have a issue with pods ,pods are hanging or some kind of  bugs
+
+K8s has two types of health checks to ascertain two different things -;
+
+Readiness Probes;-To determine when  a pods is ready (check everything like when its ready and 
+                  has loaded what it needs  to internally  in the image and is ready to take the 
+                  request from external services or not
+                  
+Liveness Probes :- To determine when a pod is healthy or unhelathy after it become ready 
+
+How to do health checks -
+                          Add the below line on deployment file in the spec section 
+                     
+                     - containerPort: 8080
+                     livenessProbe:
+                       httpGet:
+                        path: /
+                        Port: 8080
+                       initialDelayseconds: 30
+                       periodSeconds: 30
+                      readinessProbe:
+                        httpGet:
+                         path: /
+                         Port: 8080 # once it is ready it will acess port  8080 on every 3 sec  having delay of 15 sec
+                        initialDelayseconds: 15 # if access is ok then pod is healthy otherwise unhealthy
+                        periodSeconds: 3
+                         
+                         
+                Run kubectl apply -f deployment.yaml   # for applying the changes we made on deployment file
+                 
+                kubetcl describe pod name               #for checking the health checks
+                 
+                      
+                            
+            
+               
+
+
