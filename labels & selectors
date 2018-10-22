@@ -1,0 +1,36 @@
+Labels
+It is the method of organizing and identifying the resources to act upon
+It is a key value pairs which we can attach to objects like pods
+Labels are for users to help and describe meaningful information about object(POD)
+
+we can label nearly anything in the k8s world like Deployment,Services,Nodes
+
+Eg- We are using the lebels to label a node that it has SSD storage and then use a selector to tell the deployment that our
+    that our app should only ever go onto a node with SSd storage
+    For this exam we are using node selector
+   To accomplish our goal of running our deployment only on nodes with SSD we will ;-
+   Label a node as SSD
+   Define the node selctor on our deployment  to match only that node which have the label we just defined
+    
+    kubectl label node nodename storageType=ssd
+    o/p node nodename lanbelled
+    
+    Add this line at the end of deployment file 
+    nodeselctor:
+      storageType: ssd
+      
+     run the kubectl apply f deployment.yaml (applying the changes)
+     
+     
+    
+
+Selectors
+Its the way of expressing how to select objects based on their labels
+We can specify the labels on following criteria -
+Equality based
+set based
+
+
+Node selctor is a property on a deployment that useslabels and 
+selectors to choose which nodes the master decides to run a  given pod 
+
