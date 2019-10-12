@@ -2,6 +2,9 @@ kubectl is the gateway for working witn deployments
 
 kubectl get deployment #list all the deployments
 
+
+kubectl describe deployment name  #describing the Deployment
+
 kubectl rollout status deployment name of deployment #view status of deployments roll outs 
 
 kubectl set image # set the image of a deployment 
